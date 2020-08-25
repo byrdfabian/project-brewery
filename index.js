@@ -1,3 +1,8 @@
+document.addEventListener('DOMContentLoaded', function () {
+  var elems = document.querySelectorAll('.sidenav')
+  var instances = M.Sidenav.init(elems)
+})
+
 // Creating script tag for Google API
 let script = document.createElement('script')
 let key = 'AIzaSyCA-nK8SdguDxQyi-Uj2qssUMZTw3B49DA'

@@ -2,3 +2,19 @@ body {text-align: center; background-color: rgb(221, 191, 136);}
 img {
     border-radius: 50%;
 }
+
+h2 {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 85px;
+    color: black;
+    text-align: center;
+}
+
+.card-title {
+
+    
+}
+
+
+.card-text {}
+

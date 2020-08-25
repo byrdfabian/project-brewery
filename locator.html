@@ -4,6 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
     <link rel="stylesheet" type="text/css" href="./style.css">
     <title>search</title>
     <style>
@@ -24,22 +27,37 @@
 </head>
 
 <body>
-
-    <div class="d2">
-
-        <img class="logo"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQKFAQWfF_WHjavaAx0X1IKBj7oJYhEOjrweQ&usqp=CAU"
-            alt="Beer with Hops" />
-        <button><a href="./index.html">Home</button>
-        <button><a href="./search.html">Brewery By Name</button>
-        <button><a href="./locator.html">Brewery Map Locator</button>
-    </div>
+    <!-- Navbar -->
+    <nav class='nav-bar'>
+        <div class="nav-wrapper">
+            <a class="brand-logo"><img class="logo"
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQKFAQWfF_WHjavaAx0X1IKBj7oJYhEOjrweQ&usqp=CAU"
+                    alt="Beer with Hops" /></a>
+            <a href="#" data-target="mobile-menu" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./search.html">Brewery By Name</a></li>
+                <li><a href="./locator.html">Brewery Map Locator</a></li>
+                <li><a href="./favorites.html">Favorite Breweries</a></li>
+            </ul>
+        </div>
+    </nav>
+    <ul class="sidenav" id="mobile-menu">
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./search.html">Brewery By Name</a></li>
+        <li><a href="./locator.html">Brewery Map Locator</a></li>
+        <li><a href="./favorites.html">Favorite Breweries</a></li>
+    </ul>
+    <!-- End navbar -->
 
     <div class="d3">
     </div>
 
     <div id="map"></div>
 
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
     <script defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCA-nK8SdguDxQyi-Uj2qssUMZTw3B49DA&callback=initMap">

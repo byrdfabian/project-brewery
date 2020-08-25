@@ -1,6 +1,5 @@
 body {
   background-color: #fff;
-  /* background-color: rgb(221, 191, 136);*/
 }
 
 .home-page {
@@ -15,4 +14,17 @@ body {
 
 .nav-bar {
   background-color: #334652;
+}
+
+h2 {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 85px;
+  color: black;
+  text-align: center;
+}
+
+.card-title {
+}
+
+.card-text {
 }

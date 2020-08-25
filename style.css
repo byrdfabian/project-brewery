@@ -1,6 +1,5 @@
 body {
   background-color: #fff;
-  /* background-color: rgb(221, 191, 136);*/
 }
 
 .home-page {
@@ -18,17 +17,18 @@ body {
 }
 
 h2 {
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 85px;
-    color: black;
-    text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 85px;
+  color: black;
+  text-align: center;
+}
+
+.card-image {
+  width: 25%;
 }
 
 .card-title {
-
-    
 }
 
-
-.card-text {}
-
+.card-text {
+}

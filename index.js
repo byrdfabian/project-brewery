@@ -56,7 +56,7 @@ let name = ''
 
 function searchName() {
   let searchNameURL = `https://api.openbrewerydb.org/breweries?by_name=${name}`
-  fetch(brewURL)
+  fetch(searchNameURL)
     .then((response) => response.json())
     .then((data) => console.log(data))
 }

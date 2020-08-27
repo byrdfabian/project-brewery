@@ -52,6 +52,15 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 
 // Get Brewery Location
 let city = ' '
+let name = ''
+
+function searchName() {
+  let searchNameURL = `https://api.openbrewerydb.org/breweries?by_name=${name}`
+  fetch(searchNameURL)
+    .then((response) => response.json())
+    .then((data) => console.log(data))
+}
+searchName()
 
 function getBrewery() {
   let brewURL = `https://api.openbrewerydb.org/breweries?by_city=${city}`
@@ -60,12 +69,3 @@ function getBrewery() {
     .then((data) => console.log(data))
 }
 getBrewery()
-
-// function getRating() {
-//   let ratingURL =
-//     'https://maps.googleapis.com/maps/api/place/details/json?place_id=ChIJN1t_tDeuEmsRUsoyG83frY4&fields=name,rating&key=YOUR_API_KEY'
-
-//   fetch(ratingURL)
-//     .then((response) => response.json())
-//     .then((data) => console.log(data))
-// }

@@ -47,3 +47,13 @@ p {
     font-size:15px;
     color: black;
 }
+
+.label-icon {
+    background-color: goldenrod;
+}
+
+.nav-bar2 {
+    background-color: goldenrod;
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+}

@@ -60,6 +60,9 @@ function getBrewery() {
     .then((data) => console.log(data))
 }
 getBrewery()
+// the link to get the map to work
+
+
 
 // function getRating() {
 //   let ratingURL =

@@ -34,15 +34,16 @@ h2 {
 .card-image {
   width: 25%;
 }
-
+/* 
 .card-title {
 }
 
 .card-text {
-}
-form.example input[type=text] {
-  margin-top:10px;
-  margin-left:10px;
+} */
+
+form.example input[type='text'] {
+  margin-top: 10px;
+  margin-left: 10px;
   padding: 10px;
   font-size: 12px;
   border: 1px solid grey;
@@ -59,7 +60,7 @@ form.example button {
   width: 3%;
   height: 40px;
   padding: 10px;
-  background: #2196F3;
+  background: #2196f3;
   color: white;
   font-size: 12px;
   border: 1px solid grey;
@@ -73,7 +74,7 @@ form.example button:hover {
 
 /* Clear floats */
 form.example::after {
-  content: "";
+  content: '';
   clear: both;
   display: table;
 }

@@ -58,21 +58,7 @@
 
 
 
-    <script type="text/javascript">
-        // api key >>  https://positionstack.com/
-        let myKey = 'c6653693bf159f53078e19a4e8aad4b2'
-        //let lat = '40.7638435'
-        let lat = '35.2270869'
-        //let lon = '-73.9729691'
-        let lon = '-80.8431267'
-        let url = `http://api.positionstack.com/v1/reverse?access_key=${myKey}&query=${lat},${lon}`
-        function GetAddress() {
-            fetch(url)
-                .then(response => response.json())
-                .then(data => console.log(data));
-        }
-        GetAddress()
-    </script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
     <script defer

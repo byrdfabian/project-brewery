@@ -61,8 +61,8 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.open(map)
 }
 
-// Get Brewery Location
-let city = '28203 '
+// Get Brewery Location ----------------------
+let postalCode = '28203 '
 let name = ''
 
 function searchName() {
@@ -70,8 +70,29 @@ function searchName() {
   return fetch(searchNameURL).then((response) => response.json())
 }
 
+// api key >>  https://positionstack.com/
+let myKey = 'e118d24e5b1cbaf9de643c33e44a9f77'
+let lat = '35.2270869'
+let lon = '-80.8431267'
+let url = `http://api.positionstack.com/v1/reverse?access_key=${myKey}&query=${lat},${lon}`
+
+function GetAddress() {
+  fetch(url)
+    .then((response) => response.json())
+    .then(({ data }) => {
+      console.log(data.length)
+      console.log(data)
+      for (var i = 0; i < data.length; i++) {
+        console.log(data[i].postal_code)
+      }
+    })
+}
+GetAddress()
+
+// Get brewery by postal code
+
 function getBrewery() {
-  let brewURL = `https://api.openbrewerydb.org/breweries?by_city=${city}`
+  let brewURL = `https://api.openbrewerydb.org/breweries?by_postal=${postalCode}`
   fetch(brewURL)
     .then((response) => response.json())
     .then((data) => console.log(data))

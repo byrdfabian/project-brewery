@@ -34,26 +34,70 @@ h2 {
 .card-image {
   width: 100%;
 }
-
+/* 
 .card-title {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 25px;
-    color: white;
-    background-color: black;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 25px;
+  color: white;
+  background-color: black;
 }
 
 p {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size:15px;
-    color: black;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  color: black;
 }
 
 .label-icon {
-    background-color: goldenrod;
+  background-color: goldenrod;
 }
 
 .nav-bar2 {
-    background-color: goldenrod;
-    font-family: Arial, Helvetica, sans-serif;
-    color: black;
+  background-color: goldenrod;
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+}
+.card-text {
+} */
+
+form.example input[type='text'] {
+  margin-top: 10px;
+  margin-left: 10px;
+  padding: 10px;
+  font-size: 12px;
+  border: 1px solid grey;
+  float: left;
+  width: 20%;
+  height: 18px;
+  background: #f1f1f1;
+}
+
+/* Style the submit button */
+form.example button {
+  float: left;
+  margin-top: 10px;
+  width: 3%;
+  height: 40px;
+  padding: 10px;
+  background: #2196f3;
+  color: white;
+  font-size: 12px;
+  border: 1px solid grey;
+  border-left: none; /* Prevent double borders */
+  cursor: pointer;
+}
+
+form.example button:hover {
+  background: #0b7dda;
+}
+
+/* Clear floats */
+form.example::after {
+  content: '';
+  clear: both;
+  display: table;
+}
+
+form.fa-search button:hover {
+  background: #0b7dda;
 }

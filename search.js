@@ -1,3 +1,6 @@
+element.addEventListener("click", myFunction);
+
+
 // Get Brewery Location
 
 let name = ''
@@ -7,6 +10,7 @@ function searchName() {
 }
 
 // render favorites
+element.addEventListener("click", myFunction); // Add event listener to button to call Renderbreweries function
 function renderBreweries() {
   searchName(name).then((data) => {
     let list = []
@@ -60,5 +64,5 @@ function renderBreweries() {
   })
 }
 
-// Add event listener to input to update name variable
+
 // Add event listener to button to call Renderbreweries function

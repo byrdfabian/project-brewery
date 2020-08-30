@@ -101,3 +101,8 @@ form.example::after {
 form.fa-search button:hover {
   background: #0b7dda;
 }
+
+#locationResults .card-image,
+#favorites .card-image {
+  width: 25%;
+}

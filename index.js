@@ -17,14 +17,6 @@ function initMap(lat, lon, breweries) {
   infoWindow = new google.maps.InfoWindow()
 }
 
-// Get Brewery Location ----------------------
-let name = ''
-
-function searchName() {
-  let searchNameURL = `https://api.openbrewerydb.org/breweries?by_name=${name}`
-  return fetch(searchNameURL).then((response) => response.json())
-}
-
 // Get brewery by postal code
 
 function getBrewery(postalCode) {

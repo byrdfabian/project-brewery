@@ -1,57 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" type="text/css" href="./style.css">
-    <title>search</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+<link rel="stylesheet" type="text/css" href="./style.css">
+<title>search</title>
 </head>
-
 <body>
-    <!-- Navbar -->
-    <nav class='nav-bar'>
-        <div class="nav-wrapper">
-            <a class="brand-logo"><img class="logo"
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQKFAQWfF_WHjavaAx0X1IKBj7oJYhEOjrweQ&usqp=CAU"
-                    alt="Beer with Hops" /></a>
-            <a href="#" data-target="mobile-menu" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="./index.html">Home</a></li>
-                <li><a href="./brewerlist.html">Top 10 Breweries</a></li>
-                <li><a href="./search.html">Brewery By Name</a></li>
-                <li><a href="./locator.html">Brewery Map Locator</a></li>
-                <li><a href="./favorites.html">Favorite Breweries</a></li>
-            </ul>
-        </div>
-    </nav>
-    <ul class="sidenav" id="mobile-menu">
-        <li><a href="./index.html">Home</a></li>
-        <li><a href="./brewerlist.html">Top 10 Breweries</a></li>
-        <li><a href="./search.html">Brewery By Name</a></li>
-        <li><a href="./locator.html">Brewery Map Locator</a></li>
-        <li><a href="./favorites.html">Favorite Breweries</a></li>
-    </ul>
-    <!-- End navbar -->
+<!-- Navbar -->
+<nav class='nav-bar'>
+<div class="nav-wrapper">
+<a class="brand-logo"><img class="logo"
+src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQKFAQWfF_WHjavaAx0X1IKBj7oJYhEOjrweQ&usqp=CAU"
+alt="Beer with Hops" /></a>
+<a href="#" data-target="mobile-menu" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+<ul id="nav-mobile" class="right hide-on-med-and-down">
+<li><a href="./index.html">Home</a></li>
+<li><a href="./top10.html">Top 10 Breweries</a></li>
+<li><a href="./search.html">Brewery By Name</a></li>
+<li><a href="./locator.html">Brewery Map Locator</a></li>
+<li><a href="./favorites.html">Favorite Breweries</a></li>
+</ul>
+</div>
+</nav>
+<!-- End navbar -->
+<div class="d3">
+<form class="example" action="https://api.openbrewerydb.org/breweries">
+<input type="text" placeholder="Search Breweries" name="search">
+<button type="submit"><i class="fa fa-search"></i></button>
+</form>
+</div>
+<div class="d4">
+<div id="searchresult" class="card-content">
+<p class="p1"><strong>Name:</strong></p>
+<p class="p2"><strong>Address:</strong> 
+<div class="d5">
+<button class="removeFavorite btn red" data-name="${favorite.name}" >Remove Favorite</button>
+</div>
+</div>
+</div>
 
-    <div class="d3">
-        <form class="example" action="https://api.openbrewerydb.org/breweries">
-            <input type="text" placeholder="Search Breweries" name="search">
-            <button type="submit"><i class="fa fa-search"></i></button>
-          </form>
-  
-
-
-    </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCA-nK8SdguDxQyi-Uj2qssUMZTw3B49DA&callback=initMap">
-        </script>
-    <script src="index.js"></script>
+<script src="search.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
-
 </html>

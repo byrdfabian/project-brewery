@@ -1,68 +1,52 @@
-element.addEventListener("click", myFunction);
+var brewery = ["Primal Brewery", "Eleven Brewing Company"];
 
+function displayBreweryInfo() {
+    var brewery=$(this).attr("data-name");
+}
+function searchName (){
+var queryURL = 'https://api.openbrewerydb.org/breweries?by_name=${name}';
+return fetch((queryURL).then((response) => response.json())
+};
+.then(function(response) {
+    var breweryDiv = $ ("<div class='brewery'>");
+    var name = response.name;
+    var pOne = $ ("<p>").text("Name:" + name);
+    breweryDiv.append(pOne);
 
-// Get Brewery Location
+    var street =response.street;
+    var pTwo = ("<p>").text("Street:" + street);
+    breweryDiv.append(pTwo);
 
-let name = ''
-function searchName() {
-  let searchNameURL = `https://api.openbrewerydb.org/breweries?by_name=${name}`
-  return fetch(searchNameURL).then((response) => response.json())
+    var city = response.city;
+    var pThree=$ ("<p>").text("City:" + city);
+    breweryDiv.append(pThree);
+
+    var state = response.state;
+    var pFour=$ ("<p>").text("State:" + state);
+    breweryDiv.append(pFour);
+
+    $("#brewery-view").prepend(breweryDiv);
+})
+
+function renderButtons() {
+    $("#buttons-view").empty();
+
+    for (var i = 0; i < brewery.length; i++) {
+
+        var a = $("<button");
+        a.addClass ("brewery-btn");
+        a.attr("data-name", brewery[i]);
+        a.text(brewery[i]);
+        $("#buttons-view").apend(a);
+    }
 }
 
-// render favorites
-element.addEventListener("click", myFunction); // Add event listener to button to call Renderbreweries function
-function renderBreweries() {
-  searchName(name).then((data) => {
-    let list = []
-    let searchResults = document.getElementById('searchResults')
-    data.forEach((brewery) => {
-      // Render brewery cards --------------
+$("#add-brewery").on ("click", function(event) {
+    event.preventDefault();
+    var brewery = $("#brewery-input").val().trim();
+    brewery.post(brewery);
+    renderButtons();
+});
 
-      if (brewery.street) {
-        const address = `${brewery.street} ${brewery.state}, ${brewery.postal_code}`
-
-        const button = userFavorites.some((b) => brewery.name === b.name)
-          ? `<button class="btn green" disabled>Favorited</button>`
-          : `<button class="addFavorite btn green" data-name="${brewery.name}" data-address="${address}" data-website="${brewery.website_url}" >Add Favorite</button>`
-
-        list.push(`
-              <div class="col s12 m7">
-                  <div class="card horizontal">
-                      <div class="card-image">
-                      <img class='beer-icon' src="./assets/undraw_Beer_celebration_cefj.png">
-                      </div>
-                      <div class="card-stacked">
-                      <div id="content" class="card-content">
-                          <h5>${brewery.name}</h5>
-                          <p><strong>Address:</strong> <a target="_blank" href="http://maps.google.com/?q=${address}">${address}</a></p>
-                          <a href="${brewery.website_url}" target="_blank">${brewery.website_url}</a>
-                      </div>
-                      <div class="card-action">
-                          ${button}
-                      </div>
-                      </div>
-                  </div>
-              </div>
-          `)
-      }
-    })
-
-    searchResults.innerHTML = list.join('')
-
-    // if not in favorites
-    document.querySelectorAll('.addFavorite').forEach((btn) => {
-      btn.addEventListener('click', (e) => {
-        addFavorite(
-          e.target.dataset.name,
-          e.target.dataset.address,
-          e.target.dataset.website
-        )
-        e.target.disabled = true
-        e.target.textContent = 'Favorited'
-      })
-    })
-  })
-}
-
-
-// Add event listener to button to call Renderbreweries function
+$(document).on("click", ".brewery-btn", displayBreweryInfo);
+renderButtons();

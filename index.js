@@ -8,14 +8,23 @@ let script = document.createElement('script')
 let key = 'AIzaSyCA-nK8SdguDxQyi-Uj2qssUMZTw3B49DA'
 
 let map, infoWindow
-function initMap() {
+
+function initMap(lat, lon, breweries) {
   map = new google.maps.Map(document.getElementById('map'), {
-    center: { lat: -34.397, lng: 150.644 },
+    center: { lat: 0, lng: 0 },
     zoom: 14,
   })
   infoWindow = new google.maps.InfoWindow()
+}
 
-  //HTML5 geolocation.
+// Get brewery by postal code
+
+function getBrewery(postalCode) {
+  let brewURL = `https://api.openbrewerydb.org/breweries?by_postal=${postalCode}`
+  return fetch(brewURL).then((response) => response.json())
+}
+
+function GetAddress() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
       function (position) {
@@ -23,66 +32,99 @@ function initMap() {
           lat: position.coords.latitude,
           lng: position.coords.longitude,
         }
-
+        console.log(pos)
         infoWindow.setPosition(pos)
         infoWindow.setContent('You are here.')
         infoWindow.open(map)
         map.setCenter(pos)
+
+        let myKey = 'e118d24e5b1cbaf9de643c33e44a9f77'
+        let url = `http://api.positionstack.com/v1/reverse?access_key=${myKey}&query=${pos.lat},${pos.lng}`
+        fetch(url)
+          .then((response) => response.json())
+          .then(({ data }) => {
+            let confidence = data[0].confidence
+            let postalCode = data[0].postal_code
+
+            for (let i = 0; i < data.length; i++) {
+              if (data[i].confidence > confidence) {
+                confidence = data[i].confidence
+                postalCode = data[i].postal_code
+              }
+            }
+            getBrewery(postalCode).then((data) => {
+              let list = []
+              let locationResults = document.getElementById('locationResults')
+              data.forEach((brewery) => {
+                console.log(brewery)
+                // Add marker to map
+                // var myLatLng = { lat: 35.227067, lng: -80.843159 }
+                // var marker = new google.maps.Marker({
+                //   position: myLatLng,
+                //   map: map,
+                //   title: 'Hello World!',
+                // })
+                // marker.setMap(map)
+
+                // Render brewery cards --------------
+
+                if (brewery.street) {
+                  const address = `${brewery.street} ${brewery.state}, ${brewery.postal_code}`
+
+                  const button = userFavorites.some(
+                    (b) => brewery.name === b.name
+                  )
+                    ? `<button class="btn green" disabled>Favorited</button>`
+                    : `<button class="addFavorite btn green" data-name="${brewery.name}" data-address="${address}" data-website="${brewery.website_url}" >Add Favorite</button>`
+
+                  list.push(`
+                    <div class="col s12 m7">
+                        <div class="card horizontal">
+                            <div class="card-image">
+                            <img class='beer-icon' src="./assets/undraw_Beer_celebration_cefj.png">
+                            </div>
+                            <div class="card-stacked">
+                            <div id="content" class="card-content">
+                                <h5>${brewery.name}</h5>
+                                <p><strong>Address:</strong> <a target="_blank" href="http://maps.google.com/?q=${address}">${address}</a></p>
+                                <a href="${brewery.website_url}" target="_blank">${brewery.website_url}</a>
+                            </div>
+                            <div class="card-action">
+                                ${button}
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                `)
+                }
+              })
+
+              locationResults.innerHTML = list.join('')
+
+              // if not in favorites
+              document.querySelectorAll('.addFavorite').forEach((btn) => {
+                btn.addEventListener('click', (e) => {
+                  addFavorite(
+                    e.target.dataset.name,
+                    e.target.dataset.address,
+                    e.target.dataset.website
+                  )
+                  e.target.disabled = true
+                  e.target.textContent = 'Favorited'
+                })
+              })
+            })
+          })
       },
       function () {
-        handleLocationError(true, infoWindow, map.getCenter())
+        alert('Error getting location')
       }
     )
   } else {
-    // Browser doesn't support Geolocation
-    handleLocationError(false, infoWindow, map.getCenter())
+    alert('Error getting location')
   }
-
-  // CREATE forEach for map markers to create pins of nearby breweries returned from byZipcode brewery API
-  //   var myLatLng = { lat: 35.227067, lng: -80.843159 }
-
-  //   var marker = new google.maps.Marker({
-  //     position: myLatLng,
-  //     map: map,
-  //     title: 'Hello World!',
-  //   })
-  //   marker.setMap(map)
-
-  console.log(navigator.geolocation)
 }
-
-function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-  infoWindow.setPosition(pos)
-  infoWindow.setContent(
-    browserHasGeolocation
-      ? console.log('Error: The Geolocation service failed.')
-      : console.log("Error: Your browser doesn't support geolocation.")
-  )
-  infoWindow.open(map)
-}
-
-// Get Brewery Location
-let city = '28203 '
-let name = ''
-
-function searchName() {
-  let searchNameURL = `https://api.openbrewerydb.org/breweries?by_name=${name}`
-  return fetch(searchNameURL).then((response) => response.json())
-}
-
-function getBrewery() {
-  let brewURL = `https://api.openbrewerydb.org/breweries?by_city=${city}`
-  fetch(brewURL)
-    .then((response) => response.json())
-    .then((data) => console.log(data))
-}
-getBrewery()
-
-
-
-// the link to get the map to work
-
-
+GetAddress()
 
 // ------------------------------ FAVORITES PAGE ------------------------------
 

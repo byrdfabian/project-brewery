@@ -20,7 +20,7 @@ function GetAddress() {
         console.log(pos)
 
         let myKey = 'e118d24e5b1cbaf9de643c33e44a9f77'
-        let url = `http://api.positionstack.com/v1/reverse?access_key=${myKey}&query=${pos.lat},${pos.lng}`
+        let url = `https://api.positionstack.com/v1/reverse?access_key=${myKey}&query=${pos.lat},${pos.lng}`
 
         fetch(url)
           .then((response) => response.json())

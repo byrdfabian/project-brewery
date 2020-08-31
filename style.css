@@ -31,6 +31,10 @@ h2 {
   text-align: center;
 }
 
+h3 {
+  text-align: center;
+}
+
 .card-image {
   width: 100%;
 }
@@ -104,6 +108,7 @@ form.fa-search button:hover {
 }
 
 #locationResults .card-image,
-#favorites .card-image {
+#favorites .card-image,
+#searchResults .card-image {
   width: 25%;
 }

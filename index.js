@@ -57,14 +57,6 @@ function GetAddress() {
               let locationResults = document.getElementById('locationResults')
               data.forEach((brewery) => {
                 console.log(brewery)
-                // Add marker to map
-                // var myLatLng = { lat: 35.227067, lng: -80.843159 }
-                // var marker = new google.maps.Marker({
-                //   position: myLatLng,
-                //   map: map,
-                //   title: 'Hello World!',
-                // })
-                // marker.setMap(map)
 
                 // Render brewery cards --------------
 
@@ -85,7 +77,7 @@ function GetAddress() {
                             </div>
                             <div class="card-stacked">
                             <div id="content" class="card-content">
-                                <h5>${brewery.name}</h5>
+                                <h5>${brewery.name} <span class="new badge" data-badge-caption="${brewery.brewery_type}"/></h5>
                                 <p><strong>Address:</strong> <a target="_blank" href="http://maps.google.com/?q=${address}">${address}</a></p>
                                 <a href="${brewery.website_url}" target="_blank">${brewery.website_url}</a>
                             </div>
@@ -162,7 +154,7 @@ function renderFavorites() {
             </div>
             <div class="card-stacked">
               <div id="content" class="card-content">
-                <h5>${favorite.name}</h5>
+                <h5>${favorite.name} <span class="new badge" data-badge-caption="Favorited"/></h5>
                  <p><strong>Address:</strong> <a target="_blank" href="http://maps.google.com/?q=${favorite.address}">${favorite.address}</a></p>
                  <a href="${favorite.website}" target="_blank">${favorite.website}</a>
               </div>

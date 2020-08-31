@@ -6,6 +6,7 @@ function displayBreweryInfo() {
 function searchName (){
 var queryURL = 'https://api.openbrewerydb.org/breweries?by_name=${name}';
 return fetch((queryURL).then((response) => response.json())
+
 };
 .then(function(response) {
     var breweryDiv = $ ("<div class='brewery'>");

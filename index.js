@@ -2,21 +2,6 @@ document.addEventListener('DOMContentLoaded', function () {
   var elems = document.querySelectorAll('.sidenav')
   var instances = M.Sidenav.init(elems)
 })
-
-// Creating script tag for Google API
-let script = document.createElement('script')
-let key = 'AIzaSyCA-nK8SdguDxQyi-Uj2qssUMZTw3B49DA'
-
-let map, infoWindow
-
-function initMap(lat, lon, breweries) {
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: { lat: 0, lng: 0 },
-    zoom: 14,
-  })
-  infoWindow = new google.maps.InfoWindow()
-}
-
 // Get brewery by postal code
 
 function getBrewery(postalCode) {
@@ -33,13 +18,10 @@ function GetAddress() {
           lng: position.coords.longitude,
         }
         console.log(pos)
-        infoWindow.setPosition(pos)
-        infoWindow.setContent('You are here.')
-        infoWindow.open(map)
-        map.setCenter(pos)
 
         let myKey = 'e118d24e5b1cbaf9de643c33e44a9f77'
         let url = `http://api.positionstack.com/v1/reverse?access_key=${myKey}&query=${pos.lat},${pos.lng}`
+
         fetch(url)
           .then((response) => response.json())
           .then(({ data }) => {

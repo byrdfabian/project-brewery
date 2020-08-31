@@ -10,21 +10,7 @@
 
     <link rel="stylesheet" type="text/css" href="./style.css">
     <title>search</title>
-    <style>
-        /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-        #map {
-            height: 100%;
-        }
 
-        /* Optional: Makes the sample page fill the window. */
-        html,
-        body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
-    </style>
 </head>
 
 <body>
@@ -46,6 +32,7 @@
     </nav>
     <ul class="sidenav" id="mobile-menu">
         <li><a href="./index.html">Home</a></li>
+        <li><a href="./top10.html">Top 10 Breweries</a></li>
         <li><a href="./search.html">Brewery By Name</a></li>
         <li><a href="./locator.html">Brewery Map Locator</a></li>
         <li><a href="./favorites.html">Favorite Breweries</a></li>
@@ -53,13 +40,8 @@
     <!-- End navbar -->
 
 
-
-    <nav class='nav-bar2'>
-        <input id="pac-input" class="controls" type="text" placeholder="Search Box" />
-    </nav>
-
     <h3>Brewery Search By Location</h3>
-    <div id="map"></div>
+
     <div id="locationResults" class="container">
 
     </div>
@@ -70,9 +52,7 @@
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCA-nK8SdguDxQyi-Uj2qssUMZTw3B49DA&callback=initMap">
-        </script>
+
     <script src="index.js"></script>
 
 </body>
